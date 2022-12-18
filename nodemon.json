@@ -1,0 +1,11 @@
+{
+  "exec": "npx tsx",
+  "ext": "ts",
+  "watch": ["src"],
+  "events": {
+    "start": "node -e \"console.clear()\""
+  },
+  "env": {
+    "DEBUG": "wsify*"
+  }
+}
