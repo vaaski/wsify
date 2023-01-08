@@ -4,14 +4,19 @@
   "description": "A simple & modern WebSocket-to-TCP proxy/bridge for Node.js",
   "exports": "./dist/index.js",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.ts",
-    "build": "tsup-node --clean --format esm src/index.ts --dts"
+    "build": "tsup-node --clean --format esm src/index.ts --dts",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "websockify",
     "typescript"
+  ],
+  "files": [
+    "dist"
   ],
   "author": "vaaski <admin@vaa.ski>",
   "license": "MIT",
