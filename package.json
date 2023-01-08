@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "nodemon ./src/index.ts",
     "build": "tsup-node --clean --format esm src/index.ts --dts",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "test": "echo \"no tests\""
   },
   "keywords": [
     "websockify",
