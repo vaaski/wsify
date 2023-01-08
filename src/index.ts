@@ -18,7 +18,7 @@ export interface ConnectionNode {
 export type WSProxyEvents = {
   connect: (socket: WebSocket, request: http.IncomingMessage) => void
   disconnect: (socket: WebSocket, code: number, reason: Buffer) => void
-  error: (error?: unknown) => void
+  proxyError: (error?: unknown) => void
   listening: () => void
 }
 
@@ -65,7 +65,7 @@ export class WSProxy extends (EventEmitter as new () => TypedEmitter<WSProxyEven
     target.on("error", () => {
       log("target error")
 
-      this.emit("error")
+      this.emit("proxyError")
 
       socket.close()
       target.end()
@@ -87,7 +87,7 @@ export class WSProxy extends (EventEmitter as new () => TypedEmitter<WSProxyEven
     socket.on("error", error => {
       log("socket error", error)
 
-      this.emit("error", error)
+      this.emit("proxyError", error)
 
       target.end()
     })
@@ -99,15 +99,17 @@ export class WSProxy extends (EventEmitter as new () => TypedEmitter<WSProxyEven
   }
 }
 
-const test = () => {
-  const proxy = new WSProxy(
-    { host: "localhost", port: 8080 },
-    { host: "192.168.0.88", port: 5900 },
-    true
-  )
+// const test = () => {
+//   const proxy = new WSProxy(
+//     { host: "localhost", port: 8080 },
+//     { host: "192.168.0.88", port: 5900 },
+//     true
+//   )
 
-  proxy.on("connect", () => console.log("connect"))
-  proxy.on("disconnect", () => console.log("disconnect"))
-}
+//   proxy.on("connect", () => console.log("connect"))
+//   proxy.on("disconnect", () => {
+//     proxy.close()
+//   })
+// }
 
-test()
+// test()
