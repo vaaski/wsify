@@ -35,10 +35,10 @@
     "prettier": "^2.8.1",
     "tsup": "^6.5.0",
     "tsx": "^3.12.1",
-    "typed-emitter": "^2.1.0",
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "typed-emitter": "^2.1.0",
     "debug": "^4.3.4",
     "ws": "^8.11.0"
   }
