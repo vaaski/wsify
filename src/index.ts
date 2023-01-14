@@ -20,6 +20,7 @@ export type WSProxyEvents = {
   disconnect: (socket: WebSocket, code: number, reason: Buffer) => void
   proxyError: (error?: unknown) => void
   listening: () => void
+  close: () => void
 }
 
 export class WSProxy extends (EventEmitter as new () => TypedEmitter<WSProxyEvents>) {
@@ -96,6 +97,7 @@ export class WSProxy extends (EventEmitter as new () => TypedEmitter<WSProxyEven
   public close = () => {
     this.wsServer.close()
     this.webServer.close()
+    this.emit("close")
   }
 }
 
