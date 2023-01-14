@@ -1,6 +1,6 @@
 {
   "name": "wsify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple & modern WebSocket-to-TCP proxy/bridge for Node.js",
   "exports": "./dist/index.js",
   "main": "./dist/index.js",
